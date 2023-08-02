@@ -5,11 +5,14 @@ plugins {
 }
 
 group = 'com.currency.exchange'
-version = '0.0.1-SNAPSHOT'
 
 
 java {
 	sourceCompatibility = '17'
+}
+
+jar {
+	archivesBaseName = 'app'
 }
 
 repositories {
