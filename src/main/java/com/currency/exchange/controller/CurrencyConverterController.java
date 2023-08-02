@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/")
 public class CurrencyConverterController {
+    
+    private static final double CONVERSION_VALUE = 82.3;
 
     @GetMapping("/v1/convert/from/{from}/to/{to}")
     public ResponseEntity<ConversionResponseDto> convert(@PathVariable("from") Currency from, @PathVariable("to") Currency to,
@@ -16,7 +18,8 @@ public class CurrencyConverterController {
                 .fromCurrency(from)
                 .toCurrency(to)
                 .fromValue(value)
-                .convertedValue((value * 100))
+                .convertedValue((value * CONVERSION_VALUE))
+                .currentConversionRatio(CONVERSION_VALUE)
                 .build();
         return ResponseEntity.ok(response);
     }

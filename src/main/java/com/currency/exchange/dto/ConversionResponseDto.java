@@ -11,5 +11,7 @@ public class ConversionResponseDto {
     private Currency fromCurrency;
     private Currency toCurrency;
     private Float fromValue;
-    private Float convertedValue;
+    private Double convertedValue;
+    
+    private Double currentConversionRatio;
 }
