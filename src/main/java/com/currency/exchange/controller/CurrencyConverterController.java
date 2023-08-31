@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class CurrencyConverterController {
     
-    private static final double CONVERSION_VALUE = 82.3;
+    private static final double CONVERSION_VALUE = 1.1;
 
     @GetMapping("/v1/convert/from/{from}/to/{to}")
     public ResponseEntity<ConversionResponseDto> convert(@PathVariable("from") Currency from, @PathVariable("to") Currency to,
