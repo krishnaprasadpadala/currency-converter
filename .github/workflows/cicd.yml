@@ -28,15 +28,12 @@ jobs:
     steps:
       - name: Validate for Production Deploy
         run: |
-          if [[ $(date +%A) == "Thursday" ]]; then
-            echo "Today is Thursday..."
-            echo "Exiting from the flow as Deployments are not allowed on Thursday"
-            exit 0
-          elif [[ "$(date +%A)" == "Friday" ]]; then
-            echo "Today is Friday"
-          else
-            echo "Today is another day..."
+          if [[ $(date +%A) == "Thursday" || $(date +%A) == "Friday" || $(date +%A) == "Saturday" ]]; then
+            echo "Failing the Stage as Production deployment is not allowed"
             exit 1
+          else
+            echo "Proceeding to Deployment"
+            exit 0
           fi
 
   deploy_in_prod:
