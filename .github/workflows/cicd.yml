@@ -24,7 +24,7 @@ jobs:
     needs: [deploy_in_qa]
     runs-on: [ ubuntu-latest ]
     env:
-      CURRENT_DAY: $(date +%A)
+      CURRENT_DAY: "$(date +%A)"
     steps:
       - name: Validate for Production Deploy
         run: |
