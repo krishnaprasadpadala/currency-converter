@@ -30,6 +30,8 @@ jobs:
         run: |
           if [[ $(date +%A) == "Thursday" ]]; then
             echo "Today is Thursday..."
+            echo "Exiting from the flow as Deployments are not allowed on Thursday"
+            exit 0
           elif [[ "$(date +%A)" == "Friday" ]]; then
             echo "Today is Friday"
           else
