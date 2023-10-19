@@ -1,0 +1,35 @@
+name: CICD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build_and_deploy_in_dev:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Build codebase
+        run: echo "Building the code..."
+      - name: Deploy artifacts....
+        run: echo "Deploying the artifacts"
+        
+  deploy_in_qa:
+    needs: [build_and_deploy_in_dev]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: QA Deploy
+        run: echo "Deploying in QA"
+  
+  validate_for_prod_deployment:
+    needs: [deploy_in_qa]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Validate for Production Deploy
+        run: echo "Validating for Production Deploy"
+
+  deploy_in_prod:
+    needs: [deploy_in_qa, validate_for_prod_deployment]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Prod deploy
+        run: echo "Deploying in QA"
