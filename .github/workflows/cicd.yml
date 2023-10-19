@@ -23,9 +23,18 @@ jobs:
   validate_for_prod_deployment:
     needs: [deploy_in_qa]
     runs-on: [ ubuntu-latest ]
+    env:
+      CURRENT_DAY: $(date +%A)
     steps:
       - name: Validate for Production Deploy
-        run: echo "Validating for Production Deploy"
+        run: |
+          if ["$CURRENT_DAY" = "Thursday"]; then
+            echo "Today is Thursday..."
+          elif ["$CURRENT_DAY" = "Friday"]; then
+            echo "Today is Friday"
+          else
+            echo "Today is another day..."
+          fi
 
   deploy_in_prod:
     needs: [deploy_in_qa, validate_for_prod_deployment]
