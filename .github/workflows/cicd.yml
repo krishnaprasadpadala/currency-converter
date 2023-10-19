@@ -28,12 +28,13 @@ jobs:
     steps:
       - name: Validate for Production Deploy
         run: |
-          if ["$CURRENT_DAY" = "Thursday"]; then
+          if [$(date +%A) == "Thursday"]; then
             echo "Today is Thursday..."
-          elif ["$(date +%A)" = "Friday"]; then
+          elif ["$(date +%A)" == "Friday"]; then
             echo "Today is Friday"
           else
             echo "Today is another day..."
+            exit 1
           fi
 
   deploy_in_prod:
