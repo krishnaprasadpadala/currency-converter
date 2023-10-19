@@ -30,7 +30,7 @@ jobs:
         run: |
           if ["$CURRENT_DAY" = "Thursday"]; then
             echo "Today is Thursday..."
-          elif ["$CURRENT_DAY" = "Friday"]; then
+          elif ["$(date +%A)" = "Friday"]; then
             echo "Today is Friday"
           else
             echo "Today is another day..."
