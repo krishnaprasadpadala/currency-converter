@@ -33,7 +33,7 @@ jobs:
             echo "Failing the Stage as Production deployment is not allowed"
             exit 1
           else
-            echo "Proceeding to Deployment"
+            echo "Proceeding to Deployment..."
             exit 0
           fi
 
