@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "current day is $CURRENT_DAY"
           echo "DEFAULT_FLOW value is ${{ vars.DEFAULT_FLOW  }}"
-          if [ "${{ vars.DEFAULT_FLOW }}" == "ENABLED"]; then
+          if [ ${{ vars.DEFAULT_FLOW }} == "ENABLED"]; then
             echo "Failing the Stage as Production deployment is not allowed"
             exit 1
           else
