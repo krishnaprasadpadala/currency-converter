@@ -24,8 +24,6 @@ jobs:
   validate_for_prod_deployment:
     needs: [deploy_in_qa]
     runs-on: [ ubuntu-latest ]
-    env:
-      CURRENT_DAY: "$(date +%u)"
     steps:
       - name: "Set CURRENT_DAY variable"
         id: set_current_day
