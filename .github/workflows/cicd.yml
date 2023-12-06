@@ -43,7 +43,7 @@ jobs:
           fi
           if [[ "${{ vars.DEFAULT_FLOW }}" = "DISABLED"  &&  "$CURRENT_DAY" > "${{ vars.PAUSE_DAY_OF_THE_WEEK }}" ]]; then
             echo "Current day is either Friday or Weekend. Hence Failing the production deployment"
-            exit 0
+            exit 1
           fi
 
   deploy_in_prod:
