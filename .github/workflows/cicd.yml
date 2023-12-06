@@ -25,7 +25,7 @@ jobs:
     needs: [deploy_in_qa]
     runs-on: [ ubuntu-latest ]
     env:
-      CURRENT_DAY: "$(date +%A)"
+      CURRENT_DAY: "$(date +%u)"
     steps:
       - name: Validate for Production Deploy
         run: |
@@ -36,6 +36,7 @@ jobs:
             echo "Proceeding to Deployment..."
             exit 0
           fi
+          echo "current day is $CURRENT_DAY"
 
   deploy_in_prod:
     needs: [deploy_in_qa, validate_for_prod_deployment]
