@@ -31,7 +31,7 @@ jobs:
         
       - name: Validate for Production Deploy
         run: |
-          if {{ (vars.DEFAULT_FLOW == 'ENABLED') }} then
+          if ${{ (vars.DEFAULT_FLOW == 'ENABLED') }} then
             echo "Failing the Stage as Production deployment is not allowed"
             exit 1
           else
