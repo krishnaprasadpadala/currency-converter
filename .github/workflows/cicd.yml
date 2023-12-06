@@ -38,7 +38,6 @@ jobs:
             exit 1
           else
             echo "Proceeding to Deployment..."
-            exit 0
           fi
           echo "current day is $CURRENT_DAY"
 
