@@ -33,13 +33,14 @@ jobs:
       
       - name: Validate for Production Deploy
         run: |
-          if [[ vars.DEFAULT_FLOW == "ENABLED"]]; then
+          echo "current day is $CURRENT_DAY"
+          echo "DEFAULT_FLOW value is ${{ vars.DEFAULT_FLOW  }}"
+          if [ "${{ vars.DEFAULT_FLOW }}" == "ENABLED"]; then
             echo "Failing the Stage as Production deployment is not allowed"
             exit 1
           else
             echo "Proceeding to Deployment..."
           fi
-          echo "current day is $CURRENT_DAY"
 
   deploy_in_prod:
     needs: [deploy_in_qa, validate_for_prod_deployment]
