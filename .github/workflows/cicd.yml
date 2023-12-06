@@ -24,9 +24,11 @@ jobs:
   validate_for_prod_deployment:
     needs: [deploy_in_qa]
     runs-on: [ ubuntu-latest ]
-    env:
-      CURRENT_DAY: ${{date +%u}}
     steps:
+      - name: "Set CURRENT_DAY variable"
+        id: set_current_day
+        run: echo "CURRENT_DAY=$(date +%u)" >> $GITHUB_ENV
+        
       - name: Validate for Production Deploy
         run: |
           if [[ $(date +%A) == "Thursday" || $(date +%A) == "Friday" || $(date +%A) == "Saturday" ]]; then
