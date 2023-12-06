@@ -36,8 +36,12 @@ jobs:
           echo "current day is $CURRENT_DAY"
           echo "DEFAULT_FLOW value is ${{ vars.DEFAULT_FLOW  }}"
           if [ "${{ vars.DEFAULT_FLOW }}" = "ENABLED" ]; then
-            echo "Failing the Stage as Production deployment is not allowed"
-            exit 1
+            echo "Default flow is enabled. Hence proceeding with deployment to Production."
+            exit 0
+          fi
+          if [ "${{ vars.DEFAULT_FLOW }}" = "DISABLED" && "$CURRENT_DAY" < "${{ vars.PAUSE_DAY_OF_THE_WEEK }}" ]; then
+            echo "Current day is neither Friday nor Weekend. Hence proceeding with deployment to Production."
+            exit 0
           else
             echo "Proceeding to Deployment..."
           fi
